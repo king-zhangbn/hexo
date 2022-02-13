@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2c326069">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在GITHUB PAGE上部署VUEPRESS1&gt;vuepress用于迅速搭建技术文档网站与个人博客，简单快捷，  有阅读障碍的同学，可以跳过第一至四节，下载我写好的工具包:git clone https:&#x2F;&#x2F;github.com&#x2F;zhangyunchencc&#x2F;vuepress-devkit.git然后从第五节开始看。 一、为什么你需要一个博客？优秀的程序员都在写博客，写博客有很多好处：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在GITHUB PAGE上部署VUEPRESS">
+<meta property="og:url" content="http://example.com/2022/02/13/%E5%9C%A8GITHUB-PAGE%E4%B8%8A%E9%83%A8%E7%BD%B2VUEPRESS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在GITHUB PAGE上部署VUEPRESS1&gt;vuepress用于迅速搭建技术文档网站与个人博客，简单快捷，  有阅读障碍的同学，可以跳过第一至四节，下载我写好的工具包:git clone https:&#x2F;&#x2F;github.com&#x2F;zhangyunchencc&#x2F;vuepress-devkit.git然后从第五节开始看。 一、为什么你需要一个博客？优秀的程序员都在写博客，写博客有很多好处：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281634347.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281605653.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281607620.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281639740.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281644058.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281648821.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281649008.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281657056.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281653592.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281655924.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281656461.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281659792.png">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281701998.png">
+<meta property="article:published_time" content="2022-02-13T03:09:35.000Z">
+<meta property="article:modified_time" content="2022-02-13T03:10:11.089Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281634347.png">
+  
+  
+  <title>在GITHUB PAGE上部署VUEPRESS - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/0213.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>坍缩星</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在GITHUB PAGE上部署VUEPRESS">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-13 11:09" pubdate>
+        2022年2月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在GITHUB PAGE上部署VUEPRESS</h1>
+            
+            <div class="markdown-body">
+              <h1 id="在GITHUB-PAGE上部署VUEPRESS"><a href="#在GITHUB-PAGE上部署VUEPRESS" class="headerlink" title="在GITHUB PAGE上部署VUEPRESS"></a>在GITHUB PAGE上部署VUEPRESS</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs apl">&gt;vuepress用于迅速搭建技术文档网站与个人博客，简单快捷，<br></code></pre></td></tr></table></figure>
+
+<p>有阅读障碍的同学，可以跳过第一至四节，下载我写好的<a target="_blank" rel="noopener" href="https://github.com/zhangyunchencc/vuepress-devkit.git">工具包</a>:<br><code>git clone https://github.com/zhangyunchencc/vuepress-devkit.git</code><br>然后从第五节开始看。</p>
+<h2 id="一、为什么你需要一个博客？"><a href="#一、为什么你需要一个博客？" class="headerlink" title="一、为什么你需要一个博客？"></a>一、为什么你需要一个博客？</h2><p>优秀的程序员都在写博客，写博客有很多好处：</p>
+<ul>
+<li>帮助自己梳理、总结、理解知识点（个人提升）</li>
+<li>帮助别人理解知识点（好人一生平安）</li>
+<li>简历更好看，更多面试机会（升职加薪）</li>
+</ul>
+<h2 id="二、什么是-VuePress，为什么要使用-VuePress-？"><a href="#二、什么是-VuePress，为什么要使用-VuePress-？" class="headerlink" title="二、什么是 VuePress，为什么要使用 VuePress ？"></a>二、什么是 VuePress，为什么要使用 VuePress ？</h2><p><strong>VuePress</strong> 是尤雨溪（vue.js 框架作者）4月12日发布的一个全新的基于 vue 的静态网站生成器，实际上就是一个 vue 的 spa 应用，内置 webpack，可以用来写文档。详见 <a target="_blank" rel="noopener" href="https://vuepress.docschina.org/">VuePress中文网</a></p>
+<p>其实类似的建站工具有很多，比如 WordPress、Jekyll、Hexo 等，其中 WordPress 需要自己购买虚拟主机，不考虑；Jekyll 是 Github-Page 默认支持的，听说操作比较复杂，没有用过不做过多评价了；Hexo 之前一直在用，但一直觉得主题不好看，风格不够简洁优雅。自从遇见 VuePress，嗯，就是它了~</p>
+<p>VuePress 有很多优点：</p>
+<ul>
+<li>界面简洁优雅（个人感觉比 HEXO 好看）</li>
+<li>容易上手（半小时能搭好整个项目）</li>
+<li>更好的兼容、扩展 Markdown 语法</li>
+<li>响应式布局，PC端、手机端</li>
+<li>Google Analytics 集成</li>
+<li>支持 PWA</li>
+</ul>
+<h2 id="三、开始搭建"><a href="#三、开始搭建" class="headerlink" title="三、开始搭建"></a>三、开始搭建</h2><h3 id="创建项目文件夹"><a href="#创建项目文件夹" class="headerlink" title="创建项目文件夹"></a>创建项目文件夹</h3><p>可以右键手动新建，也可以使用 mkdir 命令新建：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">mkdir vuepressBlogDemo<br></code></pre></td></tr></table></figure>
+
+<h3 id="全局安装-VuePress"><a href="#全局安装-VuePress" class="headerlink" title="全局安装 VuePress"></a>全局安装 VuePress</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g vuepress<br></code></pre></td></tr></table></figure>
+
+<h3 id="进入-vuepressBlogDemo-文件夹，初始化项目"><a href="#进入-vuepressBlogDemo-文件夹，初始化项目" class="headerlink" title="进入 vuepressBlogDemo 文件夹，初始化项目"></a>进入 vuepressBlogDemo 文件夹，初始化项目</h3><p>使用 <code>npm init</code> 或 <code>npm init -y</code>（默认yes）</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init -y<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建文件夹和文件"><a href="#创建文件夹和文件" class="headerlink" title="创建文件夹和文件"></a>创建文件夹和文件</h3><p>在 vuepressBlogDemo 文件夹中创建 docs 文件夹，在 docs 中创建 .vuepress 文件夹，在.vuepress中创建 public 文件夹和 config.js 文件，最终项目结构如下所示：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus">vuepressBlogDemo<br>├─── docs<br>│   ├── README<span class="hljs-selector-class">.md</span><br>│   └── <span class="hljs-selector-class">.vuepress</span><br>│       ├── public<br>│       └── config<span class="hljs-selector-class">.js</span><br>└── package.json<br></code></pre></td></tr></table></figure>
+
+<h3 id="在-config-js-文件中配置网站标题、描述、主题等信息"><a href="#在-config-js-文件中配置网站标题、描述、主题等信息" class="headerlink" title="在 config.js 文件中配置网站标题、描述、主题等信息"></a>在 config.js 文件中配置网站标题、描述、主题等信息</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs awk">module.exports = &#123;<br>  title: <span class="hljs-string">&#x27;Chen\&#x27;s blog&#x27;</span>,<br>  description: <span class="hljs-string">&#x27;我的个人网站&#x27;</span>,<br>  head: [ <span class="hljs-regexp">//</span> 注入到当前页面的 HTML &lt;head&gt; 中的标签<br>    [<span class="hljs-string">&#x27;link&#x27;</span>, &#123; rel: <span class="hljs-string">&#x27;icon&#x27;</span>, href: <span class="hljs-string">&#x27;/logo.jpg&#x27;</span> &#125;], <span class="hljs-regexp">//</span> 增加一个自定义的 favicon(网页标签的图标)<br>  ],<br>  base: <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-regexp">//</span> 这是部署到github相关的配置<br>  markdown: &#123;<br>    lineNumbers: false <span class="hljs-regexp">//</span> 代码块显示行号<br>  &#125;,<br>  themeConfig: &#123;<br>    nav:[ <span class="hljs-regexp">//</span> 导航栏配置<br>      &#123;text: <span class="hljs-string">&#x27;前端基础&#x27;</span>, link: <span class="hljs-string">&#x27;/accumulate/&#x27;</span> &#125;,<br>      &#123;text: <span class="hljs-string">&#x27;算法题库&#x27;</span>, link: <span class="hljs-string">&#x27;/algorithm/&#x27;</span>&#125;,<br>      &#123;text: <span class="hljs-string">&#x27;微博&#x27;</span>, link: <span class="hljs-string">&#x27;https://baidu.com&#x27;</span>&#125;      <br>    ],<br>    sidebar: <span class="hljs-string">&#x27;auto&#x27;</span>, <span class="hljs-regexp">//</span> 侧边栏配置<br>    sidebarDepth: <span class="hljs-number">2</span>, <span class="hljs-regexp">//</span> 侧边栏显示<span class="hljs-number">2</span>级<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="在-package-json-文件里添加两个启动命令"><a href="#在-package-json-文件里添加两个启动命令" class="headerlink" title="在 package.json 文件里添加两个启动命令"></a>在 package.json 文件里添加两个启动命令</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;dev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vuepress dev docs&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vuepress build docs&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="一切就绪-跑起来看看吧"><a href="#一切就绪-跑起来看看吧" class="headerlink" title="一切就绪 跑起来看看吧"></a>一切就绪 跑起来看看吧</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm <span class="hljs-built_in">run</span> dev<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、一些小亮点"><a href="#四、一些小亮点" class="headerlink" title="四、一些小亮点"></a>四、一些小亮点</h2><p>完成了基础搭建后，就可以在docs目录下新建 <code>.md</code> 文件写文章了（.md 是 Markdown 语法文件，你需要知道 Markdown 的一些基本写法，很简单，这里给大家一份 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b03a8d7b1719">Markdown 语法整理大集合</a>）</p>
+<p>下面给大家安利一些实用的方法。</p>
+<h3 id="代码块高亮"><a href="#代码块高亮" class="headerlink" title="代码块高亮"></a>代码块高亮</h3><p>在 .md 文件中书写代码时，可在 &#96;&#96;&#96; 后增加 js、html、json等格式类型，代码块即可按照指定类型高亮</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281634347.png" srcset="/img/loading.gif" lazyload alt="image-20210828163434850"></p>
+<h2 id="五、部署上线"><a href="#五、部署上线" class="headerlink" title="五、部署上线"></a>五、部署上线</h2><p>说了这么多都是在本地进行的，现在我们要把本地的内容推送到某个服务器上，这样只要有网络，就可以随时随地看自己的网站了。</p>
+<p>一般来说，有两种方案可供选择：</p>
+<ol>
+<li>自己买一个服务器，阿里云、腾讯云等，这种方式的好处是速度有保证、可以被搜索引擎收录，坏处是要花钱啊 土豪同学可以考虑。</li>
+<li>使用 <a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a> 。什么是 Github Pages 呢？简单说就是 Github 提供的、用于搭建个人网站的静态站点托管服务。很多人用它搭建个人博客。这种方式的好处是免费、方便，坏处是速度可能会有些慢、不能被国内的搜索引擎收录。</li>
+</ol>
+<p>最终我选择了方案2，下面将给大家讲解如何使用 Github Pages 服务。</p>
+<p>登陆 GitHub账号，打开 github 网站，登陆自己的 github 账号（没有账号的快去注册并面壁思过作为一个优秀的程序员为啥连一个github账号都没有）</p>
+<p>接着我们新建两个仓库，</p>
+<h3 id="新建仓库：-USERNAME-github-io"><a href="#新建仓库：-USERNAME-github-io" class="headerlink" title="新建仓库： USERNAME.github.io"></a>新建仓库： USERNAME.github.io</h3><blockquote>
+<p>注意！<br>USERNAME 必须是你 Github 的账号名称，不是你的名字拼音，也不是你的非主流网名，不要瞎起，要保证和Github账号名一模一样！</p>
+</blockquote>
+<p>例如我的 Github 账号名称是 <code>king-zhangbn</code></p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281605653.png" srcset="/img/loading.gif" lazyload alt="image-20210828160534984"></p>
+<p>那么新建仓库，Repository name 就填写为：king-zhangbn<code>.github.io</code></p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281607620.png" srcset="/img/loading.gif" lazyload alt="image-20210828160731272"></p>
+<p>因为我已经搭建好了，这里会报错</p>
+<h3 id="下载工具包"><a href="#下载工具包" class="headerlink" title="下载工具包"></a>下载工具包</h3><p>这个项目是用来开发博客的，以后只需要改这个项目就够了。</p>
+<ul>
+<li>使用工具包的，将 <a target="_blank" rel="noopener" href="https://github.com/zhangyunchencc/vuepress-devkit.git">vuepress-devkit</a> 中的内容拷贝到 vuepressBlog 文件夹中</li>
+<li>自己从头搭建的，将 vuepressBlogDemo 文件夹的内容拷贝到仓库二，并在根目录下创建 deploy.sh 文件，内容如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/usr/bin/env sh</span><br><br><span class="hljs-comment"># 确保脚本抛出遇到的错误</span><br><span class="hljs-built_in">set</span> -e<br><br><span class="hljs-comment"># 生成静态文件</span><br>npm run build<br><br><span class="hljs-comment"># 进入生成的文件夹</span><br><span class="hljs-built_in">cd</span> docs/.vuepress/dist<br><br><span class="hljs-comment"># 如果是发布到自定义域名</span><br><span class="hljs-comment"># echo &#x27;www.yourwebsite.com&#x27; &gt; CNAME</span><br><br>git init<br>git add -A<br>git commit -m <span class="hljs-string">&#x27;deploy&#x27;</span><br><br><span class="hljs-comment"># 如果你想要部署到 https://USERNAME.github.io</span><br>git push -f git@github.com:USERNAME/USERNAME.github.io.git master<br><br><span class="hljs-comment"># 如果发布到 https://USERNAME.github.io/&lt;REPO&gt;  REPO=github上的项目</span><br><span class="hljs-comment"># git push -f git@github.com:USERNAME/&lt;REPO&gt;.git master:gh-pages</span><br><br><span class="hljs-built_in">cd</span> -<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改仓库二中的-deploy-sh-发布脚本"><a href="#修改仓库二中的-deploy-sh-发布脚本" class="headerlink" title="修改仓库二中的 deploy.sh 发布脚本"></a>修改仓库二中的 deploy.sh 发布脚本</h3><p>把文件中的 USERNAME 改成 Github 账号名，例如我的账号名是 zhangyunchencc，那么就可以改为：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-meta"># 如果你想要部署到 https:<span class="hljs-comment">//USERNAME.github.io</span></span><br>git <span class="hljs-keyword">push</span> -f git<span class="hljs-comment">@github.com:king-zhangbn/king-zhangbn.github.io.git master</span><br></code></pre></td></tr></table></figure>
+
+<p>这样仓库二和仓库一就建立了关联。</p>
+<p>简单说二者的关系是：仓库一负责显示网站内容，我们不需要改动它；日常开发和新增内容，都在仓库二中，并通过 npm run deploy 命令，将代码发布到仓库一。</p>
+<h3 id="在-package-json-文件夹中添加发布命令（使用工具包的请忽略）"><a href="#在-package-json-文件夹中添加发布命令（使用工具包的请忽略）" class="headerlink" title="在 package.json 文件夹中添加发布命令（使用工具包的请忽略）"></a>在 package.json 文件夹中添加发布命令（使用工具包的请忽略）</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;deploy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bash deploy.sh&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="利用GIT工具部署"><a href="#利用GIT工具部署" class="headerlink" title="利用GIT工具部署"></a>利用GIT工具部署</h3><p>点击这个链接<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git - Downloading Package (git-scm.com)</a>，下载GIT。</p>
+<p><em>下载后傻瓜式一键安装，建议安装在英文目录下</em></p>
+<p>安装完成后在开始菜单中能够找到如下程序</p>
+<p>或者右击桌面，能够看到如下 Git 选项</p>
+<ul>
+<li>GUI 为用户界面模式</li>
+<li>Bash 为命令行模式</li>
+</ul>
+<h4 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h4><p>由于git是分布式管理工具，需要输入用户名和邮箱以作为标识，因此，我们按右键打开<code>Git Bash</code>命令框</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281639740.png" srcset="/img/loading.gif" lazyload alt="image-20210828163925985"></p>
+<p>在命令行输入下列的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">git config --global user.name &quot;Your Name&quot;<br>git config --global user.email &quot;email@example.com&quot;<br></code></pre></td></tr></table></figure>
+
+<p><em>name可以为中文，邮箱建议使用qq邮箱，方便记忆</em></p>
+<h4 id="生成SSH公钥"><a href="#生成SSH公钥" class="headerlink" title="生成SSH公钥"></a>生成SSH公钥</h4><p>许多 Git 服务器都使用 SSH 公钥进行认证，所以我们也需要配置该公钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta"># </span><span class="language-bash">输入如下命令，三次回车即可生成 ssh key</span><br>ssh-keygen -t rsa -C &quot;email@example.com&quot;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281644058.png" srcset="/img/loading.gif" lazyload alt="image-20210828164407380"></p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git status</td>
+<td>查看仓库的改变情况，会有相关的提示操作出现</td>
+</tr>
+<tr>
+<td>git add</td>
+<td>直接添加所有改动的文件</td>
+</tr>
+<tr>
+<td>git commit -m “note”</td>
+<td>确认生成本地的版本，note是 版本特点说明</td>
+</tr>
+<tr>
+<td>git push</td>
+<td>将改动上传到github，若没有指定分支，则需要使用git push origin master</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>查看版本更新情况</td>
+</tr>
+<tr>
+<td>git reset -hard x</td>
+<td>回退到某个本地版本,x为git log中出现的hash值的前七位</td>
+</tr>
+<tr>
+<td>git clean -xf</td>
+<td>清除所有的未提交文件</td>
+</tr>
+</tbody></table>
+<h4 id="在GitHub上配置密钥"><a href="#在GitHub上配置密钥" class="headerlink" title="在GitHub上配置密钥"></a>在GitHub上配置密钥</h4><p>1、找到生成的SSH文件，C:\Users\<code>yourname</code>\.ssh</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281648821.png" srcset="/img/loading.gif" lazyload alt="image-20210828164800167"></p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281649008.png" srcset="/img/loading.gif" lazyload alt="image-20210828164909466"></p>
+<p>2、进入GitHub设置</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281657056.png" srcset="/img/loading.gif" lazyload alt="image-20210828165722556"></p>
+<p>点击 <strong>New SSH keys</strong></p>
+<p>把刚刚文件夹里面的<code>id_rsa.pub</code>用记事本打开，复制里面的内容到New SSH keys里面</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281653592.png" srcset="/img/loading.gif" lazyload alt="image-20210828165342163"></p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281655924.png" srcset="/img/loading.gif" lazyload alt="image-20210828165550428"></p>
+<p>点击add，输入密码</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281656461.png" srcset="/img/loading.gif" lazyload alt="image-20210828165636075"></p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>进入到你的博客文件夹</p>
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281659792.png" srcset="/img/loading.gif" lazyload alt="image-20210828165940552"></p>
+<p>初始化仓库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git init<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img/202108281701998.png" srcset="/img/loading.gif" lazyload alt="image-20210828170129594"></p>
+<p>执行</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">bash <span class="hljs-keyword">deploy</span>.sh<br></code></pre></td></tr></table></figure>
+
+<p>完成</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/13/Fuck-hexo/">
+                        <span class="hidden-mobile">Fuck hexo</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> | <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">载入网站运行时间...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

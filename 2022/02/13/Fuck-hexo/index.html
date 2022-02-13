@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2c326069">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="原文：Github Pages 访问太慢？通过 Netlify 免费加速Github Pages 为 Github 提供的一项静态站点托管服务，它直接从 Github 仓库获取静态文件进行发布，然后提供一个github.io的二级域名供用户访问，支持绑定自定义域名，支持开启 HTTPS，开启 HTTPS 会自动申请证书同时在证书过期前自动续签，这一切都是免费的，使用极其简单，只需要将你的静态文件提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fuck hexo">
+<meta property="og:url" content="http://example.com/2022/02/13/Fuck-hexo/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原文：Github Pages 访问太慢？通过 Netlify 免费加速Github Pages 为 Github 提供的一项静态站点托管服务，它直接从 Github 仓库获取静态文件进行发布，然后提供一个github.io的二级域名供用户访问，支持绑定自定义域名，支持开启 HTTPS，开启 HTTPS 会自动申请证书同时在证书过期前自动续签，这一切都是免费的，使用极其简单，只需要将你的静态文件提">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img4/202202130950889.png">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225800.png#id=VCCOt&originHeight=787&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225812.png#id=L0w5n&originHeight=493&originWidth=1266&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225822.png#id=NWsJE&originHeight=703&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225830.png#id=P8iq0&originHeight=799&originWidth=1200&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225950.png#id=FWhUF&originHeight=799&originWidth=1200&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225955.png#id=ShjWn&originHeight=757&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225959.png#id=qTr4o&originHeight=711&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230005.png#id=h6nHW&originHeight=730&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230010.png#id=oDvrj&originHeight=861&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230116.png#id=rvt7W&originHeight=717&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230121.png#id=ut4h6&originHeight=653&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230125.png#id=oabNd&originHeight=537&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="og:image" content="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230130.png#id=OedgW&originHeight=711&originWidth=1267&originalType=binary&status=done&style=none">
+<meta property="article:published_time" content="2022-02-13T02:20:32.000Z">
+<meta property="article:modified_time" content="2022-02-13T02:44:13.685Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/starfall-dust/tuchuang/raw/master/img4/202202130950889.png">
+  
+  
+  <title>Fuck hexo - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/0213.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>坍缩星</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Fuck hexo">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-13 10:20" pubdate>
+        2022年2月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Fuck hexo</h1>
+            
+            <div class="markdown-body">
+              <p>原文：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/37Y37/p/12551839.html">Github Pages 访问太慢？通过 Netlify 免费加速</a><br>Github Pages 为 Github 提供的一项静态站点托管服务，它直接从 Github 仓库获取静态文件进行发布，然后提供一个<code>github.io</code>的二级域名供用户访问，支持绑定自定义域名，支持开启 HTTPS，开启 HTTPS 会自动申请证书同时在证书过期前自动续签，这一切都是<strong>免费</strong>的，使用极其简单，只需要将你的静态文件提交到 Github，然后开启 Pages 服务即可，<a target="_blank" rel="noopener" href="https://ops-coffee.cn/">我的博客</a>就托管于 Github Pages<br>Github Pages 免费且稳定的服务让我可以专注内容，而无需考虑成本及维护的问题，非常方便广受好评，但其最大的一个问题就是国内访问速度很慢，如何简单快速又低成本的解决这个问题呢？这里介绍一个服务：Netlify<br>Netlify 是一家提供静态网站托管的综合平台，支持自动从 Github 等仓库拉取代码并构建成静态网站进行发布，同时也支持自定义域名，自动申请 SSL 证书等功能，更为重要的是自动启用<strong>CDN 加速</strong>，国内访问速度要快很多<br>以下分别是 Github Pages 和 Netlify 两个平台同一项目请求速度的对比图<br>​</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518223216.png#id=SZ04y&originHeight=557&originWidth=1415&originalType=binary&status=done&style=none"><img src="https://gitee.com/starfall-dust/tuchuang/raw/master/img4/202202130950889.png" srcset="/img/loading.gif" lazyload>
+</a><br>​</p>
+<p>从上图的测试结果可以看出国内各地的访问速度 Netlify 都能完胜，接下来详细介绍下如何通过 Netlify 给你的 Github Pages 加速</p>
+<h2 id="Netlify"><a href="#Netlify" class="headerlink" title="Netlify"></a>Netlify</h2><p>打开<a target="_blank" rel="noopener" href="https://www.netlify.com/">Netlify 官网</a>，点击右上角的<code>Sign up</code>注册账号，这里推荐关联 Github 账号<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225800.png#id=VCCOt&originHeight=787&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225800.png#id=VCCOt&originHeight=787&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>关联认证后进入 Netlify 的后台页面，如下图，点击<code>New site from Git</code><br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225812.png#id=L0w5n&originHeight=493&originWidth=1266&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225812.png#id=L0w5n&originHeight=493&originWidth=1266&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>选择网站源码托管的代码仓库类型，支持 Github、Gitlab 以及 Bitbucket，选择<code>GitHub</code><br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225822.png#id=NWsJE&originHeight=703&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225822.png#id=NWsJE&originHeight=703&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>然后会进入 Github 的认证授权页面，点击<code>Authorize Netlify by Netlify</code><br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225830.png#id=P8iq0&originHeight=799&originWidth=1200&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225830.png#id=P8iq0&originHeight=799&originWidth=1200&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>点击<code>Only select repositories</code>选择要授权的 Github 仓库，当然也可以直接选择授权所有仓库，这个授权在设置中可以改<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225950.png#id=FWhUF&originHeight=799&originWidth=1200&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225950.png#id=FWhUF&originHeight=799&originWidth=1200&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>授权完成回到 Netlify 后台页面，选择我们刚刚授权的 Github 仓库继续<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225955.png#id=ShjWn&originHeight=757&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225955.png#id=ShjWn&originHeight=757&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>选择部署的用户以及分支，如果是一些需要编译的项目，还支持定义编译的命令以及最终发布的目录，纯静态网站的话都不需要填写，直接点击<code>Deploy site</code>即可完成部署<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225959.png#id=qTr4o&originHeight=711&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518225959.png#id=qTr4o&originHeight=711&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>部署完成后，Netlify 会自动生成一个随机的二级域名<code>xxx.netlify.com</code>，我们可以修改为自定义的二级域名，点击<code>Site Settings</code><br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230005.png#id=h6nHW&originHeight=730&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230005.png#id=h6nHW&originHeight=730&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>General -&gt; Site details 下点击<code>Change site name</code>，可以为这个站点设置一个自定义的名字，二级域名也会相应改变<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230010.png#id=oDvrj&originHeight=861&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230010.png#id=oDvrj&originHeight=861&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>如果你想绑定自己的域名，需要先在域名管理系统里新建解析，将域名 CNAME 指向到你的 netlify 二级域名，以阿里云为例如下<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230116.png#id=rvt7W&originHeight=717&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230116.png#id=rvt7W&originHeight=717&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>然后进入 Netlify 管理后台，Domain management -&gt; Domains，点击<code>Add domain alias</code>，填入你的自定义域名<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230121.png#id=ut4h6&originHeight=653&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230121.png#id=ut4h6&originHeight=653&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>待域名解析生效后就会看到新绑定的域名变为绿色，并且设置为了主域名<a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230125.png#id=oabNd&originHeight=537&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230125.png#id=oabNd&originHeight=537&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>最后为自定义域名开启 HTTPS 支持，Domain management -&gt; HTTPS，点击<code>Verify DNS configuration</code>，域名验证通过则会自动申请证书<br><a target="_blank" rel="noopener" href="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230130.png#id=OedgW&originHeight=711&originWidth=1267&originalType=binary&status=done&style=none"><img src="https://gitee.com/yuexiliuli/MyMarkdownImage/raw/master/img/20210518230130.png#id=OedgW&originHeight=711&originWidth=1267&originalType=binary&status=done&style=none" srcset="/img/loading.gif" lazyload>
+</a><br>至此 Netlify 与 Github 绑定完成，可以通过自定义域名访问网站了，之后你每一次提交代码到 Github，便会<strong>自动</strong>发布至 Netlify，无需额外操作，非常方便</p>
+<h2 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h2><p>如果你是主域名要绑定 Netlify，且必须使用 A 记录的话，可以直接 ping 一下你的 Netlify 二级域名地址得到的 IP 便可以作为域名解析，例如我的域名是<code>ops-coffee.netlify.com</code>，ping 之后得到的地址是<code>157.230.35.153</code>，可以多 ping 几次得到不同的地址，都绑定到域名上以防止单节点故障<br>国内也有类似于 Github pages 这样的服务，例如 Gitee 和 Coding 提供的 pages 服务，在速度方面要有不少的优势，但稳定性欠佳，且可能会面临层层审查域名备案等问题<br>如果你的域名有备案，项目又是纯静态的话还可以考虑直接托管在国内的一些对象存储服务上，例如七牛云、腾讯云等，然后开启 CDN 加速，效果也不错，并且大多都有免费流量可以使用<br>Github Pages 和 Netlify 这种免费且可高度自定义的方案，在满足我们个性化需求的同时，省去了维护成本和资金压力，可以让站点活得更久，从而让我们把重点放在持续不断的输出内容，形成良性循环，赶紧试试吧</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/13/%E5%9C%A8GITHUB-PAGE%E4%B8%8A%E9%83%A8%E7%BD%B2VUEPRESS/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在GITHUB PAGE上部署VUEPRESS</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/13/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> | <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">载入网站运行时间...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
